@@ -1,0 +1,10 @@
+<svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+<style>
+@media(prefers-color-scheme: light){
+    path{
+        stroke: #000;
+    }
+}
+</style>
+<path d="M22.95 0.00012207V22.5001M22.95 45.0001V22.5001M22.95 22.5001H45H0" stroke="white" stroke-width="4"/>
+</svg>

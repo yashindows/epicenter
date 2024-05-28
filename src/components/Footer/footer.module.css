@@ -1,0 +1,76 @@
+.footer {
+  background-color: var(--footer-bg);
+}
+.footer .container {
+  padding: 30px 15px;
+  font-size: 20px;
+  color: var(--title-color);
+}
+
+.footerTop {
+  display: grid;
+  grid-template-columns: 0.2fr 1fr 0.2fr;
+  margin-bottom: 60px;
+}
+
+.distribution {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.distributionTitle {
+  font-size: var(--text-size);
+  max-width: 65%;
+  margin-bottom: 15px;
+}
+
+.distributionForm {
+  display: flex;
+  width: 65%;
+}
+
+.distributionForm input {
+  font-size: 20px;
+  font-family: inherit;
+}
+
+.distributionField {
+  padding: 12px 24px;
+  flex: 1 1 80%;
+  outline: none;
+  border: none;
+}
+
+.distributionField::placeholder {
+  color: #5e5e5f;
+  font-weight: 700;
+}
+
+.distributionForm input[type="submit"] {
+  border-radius: 0 10px 10px 0;
+  cursor: pointer;
+  border: none;
+  background-color: var(--accent-color);
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.footerLinks {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  align-items: start;
+}
+
+.footerBottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footerInfo,
+.footerMedia {
+  display: flex;
+  column-gap: 30px;
+  align-items: center;
+}

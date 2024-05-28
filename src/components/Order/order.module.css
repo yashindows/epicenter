@@ -1,0 +1,80 @@
+.feedbackBtn {
+  cursor: pointer;
+}
+
+dialog {
+  outline: none;
+  border: none;
+  border-radius: 15px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  padding: 75px 120px;
+}
+
+.popupContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+dialog * {
+  font-size: var(--text-size);
+}
+
+.popupTitle {
+  margin-bottom: 55px;
+  text-align: center;
+}
+
+.popupOptions {
+  display: flex;
+  column-gap: 60px;
+  margin-bottom: 80px;
+}
+
+.popupOptions > div {
+  box-shadow: 0 4px 4px #00000025;
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+.way div {
+  height: 100%;
+  display: inline-block;
+  cursor: pointer;
+  padding: 0;
+  width: 50%;
+  margin: 0;
+  border: none;
+  padding: 20px 45px;
+}
+
+.data input,
+dialog textarea {
+  height: 100%;
+  border: none;
+  outline: none;
+  background-color: var(--bg-secondary-color);
+  color: var(--text-color);
+  font-family: inherit;
+  padding-inline: 30px;
+}
+
+.data input::placeholder,
+dialog textarea::placeholder {
+  color: inherit;
+}
+
+dialog textarea {
+  padding: 30px;
+  border-radius: 15px;
+  width: 1000px;
+  resize: none;
+  margin-bottom: 55px;
+  box-shadow: 0 4px 4px #00000025;
+}
+
+.formBtn {
+  padding: 15px 137px;
+}

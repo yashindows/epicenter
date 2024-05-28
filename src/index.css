@@ -1,0 +1,101 @@
+@import url(./assets/fonts/stylesheet.css);
+:root {
+  --bg-color: #fff;
+  --title-color: #fff;
+  --accent-color: #fdd207;
+  --text-color: #070113;
+  --bg-secondary-color: #ffffff;
+  --title-size: clamp(24px, 7vw, 78px);
+  --text-size: clamp(16px, 4vw, 36px);
+  --text-color-secondary: #5e5e5f;
+  --border-radius: 15px;
+  --transition: 0.1s;
+  --banner-img: url("./assets/banner-light.png") center;
+
+  --header-bg: #707654;
+  --footer-bg: #707654;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  min-height: 100dvh;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+}
+
+[class*="Btn"] {
+  display: inline-block;
+  border-radius: var(--border-radius);
+  background-color: var(--accent-color);
+  padding: 10px 20px;
+  transition: var(--transition);
+  border: none;
+  color: var(--text-color);
+}
+
+[class*="Btn"]:hover {
+  background-color: color-mix(in srgb, var(--accent-color), #000 10%);
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-size: var(--text-size);
+  font-family: "Lato";
+}
+
+a,
+button {
+  color: var(--title-color);
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+}
+
+[class*="container"] {
+  max-width: clamp(290px, 90vw, 1890px);
+  margin: 0 auto;
+  padding-inline: 15px;
+}
+
+.info-text {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.main {
+  flex: 1 1 auto;
+}
+
+.main-page-btns {
+  display: flex;
+  position: fixed;
+  right: 5%;
+  bottom: 10%;
+  z-index: 100;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #3c3c3c;
+    --accent-color: #a32eff;
+    --text-color: #fff;
+    --banner-img: url("./assets/banner-dark.png");
+    --header-bg: #0000001a;
+    --footer-bg: #414060;
+    --bg-secondary-color: #5e5e5f;
+    --text-color-secondary: #fff;
+  }
+}

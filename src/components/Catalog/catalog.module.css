@@ -1,0 +1,92 @@
+.catalog .container {
+  padding-block: 170px 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.catalogTitle {
+  margin-bottom: 50px;
+}
+
+.filters {
+  display: flex;
+  width: 90%;
+  column-gap: 40px;
+  margin-bottom: 70px;
+}
+
+.action {
+  flex: 1 1 50%;
+  padding: 20px;
+  background-color: var(--bg-secondary-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 15px;
+  box-shadow: 0 0 4px #00000038;
+}
+
+.action * {
+  font-size: var(--text-size);
+  font-family: inherit;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-color);
+}
+
+.action input {
+  width: 90%;
+}
+
+.action input::placeholder {
+  color: inherit;
+}
+
+.btns button {
+  cursor: pointer;
+  height: 57px;
+  width: 57px;
+  box-shadow: 0 0 5px #00000038;
+  border-radius: 3px;
+}
+
+.catalogContent {
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3%;
+  row-gap: 55px;
+}
+
+.card {
+  border-radius: 15px;
+  flex: 0 0 22%;
+  overflow: hidden;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px #00000038;
+}
+
+.card img {
+  width: 100%;
+  height: 400px;
+  transition: var(--transition);
+  object-fit: cover;
+}
+
+.card:hover.card img {
+  scale: 1.2;
+}
+
+.btns {
+  display: flex;
+  column-gap: 20px;
+}
+
+.cardImage {
+  max-height: 400px;
+  overflow: hidden;
+  margin-bottom: 5px;
+}

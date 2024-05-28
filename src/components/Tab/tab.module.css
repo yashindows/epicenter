@@ -1,0 +1,29 @@
+.tab {
+  padding: 14px 45px;
+  border-radius: var(--border-radius);
+  background-color: var(--bg-secondary-color);
+  display: grid;
+  grid-template-areas:
+    "title btn"
+    "text text";
+  justify-content: space-between;
+  grid-template-columns: 1fr 20px;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 5px #0000004b;
+}
+
+.showMore {
+  grid-area: btn;
+}
+
+.tabTitle {
+  grid-area: title;
+  font-size: 48px;
+  /* margin-bottom: 25px; */
+}
+
+.tabText {
+  grid-area: text;
+  padding-block: 25px;
+}

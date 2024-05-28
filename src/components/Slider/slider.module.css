@@ -1,0 +1,50 @@
+.suggestions .container {
+  padding-inline: 15px;
+  padding-block: 50px;
+}
+
+.slider {
+  width: 100%;
+  position: relative;
+  border-radius: 5px;
+  overflow: hidden;
+  max-height: 90vh;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 10px #00000025;
+}
+
+.slider img {
+  object-fit: cover;
+  box-sizing: content-box;
+  width: 100%;
+  max-height: inherit;
+}
+
+.sliderTop {
+  background-color: var(--bg-secondary-color);
+  width: 100%;
+  display: flex;
+  padding: 25px 50px;
+  justify-content: space-between;
+}
+
+.sliderControlBtn {
+  cursor: pointer;
+}
+
+.sliderLines {
+  display: flex;
+  justify-content: center;
+  column-gap: 12px;
+}
+
+.line {
+  width: 120px;
+  height: 6px;
+  background-color: var(--text-color-secondary);
+}
+
+.sliderTitle {
+  font-weight: 700;
+  font-size: 48px;
+}

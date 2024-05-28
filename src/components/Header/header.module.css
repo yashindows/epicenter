@@ -1,0 +1,37 @@
+.header {
+  width: 100%;
+  position: absolute;
+  box-shadow: 0 0 4px #000;
+  background-color: var(--header-bg);
+  z-index: 10;
+}
+
+.header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 20px;
+  font-weight: 600;
+  color: var(--title-color);
+  font-size: 20px;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  column-gap: 4vw;
+}
+
+.logoBtn {
+}
+
+.headerLinks {
+  display: flex;
+  column-gap: 25px;
+}
+
+.headerInfo {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}

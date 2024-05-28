@@ -1,0 +1,42 @@
+.banner {
+  background: var(--banner-img);
+  background-size: cover;
+  height: 100dvh;
+  overflow: hidden;
+  position: relative;
+}
+
+.banner .container {
+  padding-block: 180px 110px;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  row-gap: 50px;
+  color: var(--title-color);
+}
+
+.bannerTitle {
+  font-size: var(--title-size);
+  max-width: 75%;
+}
+
+.bannerText {
+  display: flex;
+  flex-direction: column;
+  row-gap: 35px;
+  font-size: var(--text-size);
+}
+
+.bannerBtn {
+  padding: 15px;
+  background-color: var(--accent-color);
+  border-radius: var(--border-radius);
+}
+
+.arrow {
+  position: absolute;
+  bottom: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+}

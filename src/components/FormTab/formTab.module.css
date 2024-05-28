@@ -1,0 +1,6 @@
+.active {
+  background-color: var(--accent-color);
+}
+.inactive {
+  background-color: var(--bg-color);
+}
