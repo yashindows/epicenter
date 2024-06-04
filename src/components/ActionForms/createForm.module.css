@@ -1,0 +1,38 @@
+.actionForm .container {
+  padding-block: 170px 200px;
+}
+
+.actionForm form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+}
+
+.actionForm form * {
+  font-size: var(--text-size);
+  font-family: inherit;
+}
+
+.actionForm input,
+.actionForm textarea {
+  border: none;
+  outline: none;
+  border-radius: 15px;
+  padding: 20px;
+  background-color: transparent;
+  color: var(--text-color);
+  box-shadow: 0 0 10px #0000003d;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-color);
+}
+
+textarea {
+  resize: none;
+}
+
+.formBtn {
+  padding: 20px;
+}

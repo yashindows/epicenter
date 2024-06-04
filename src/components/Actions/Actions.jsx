@@ -1,8 +1,18 @@
 import React, { useEffect, useState } from "react"
 import styles from "./actions.module.css"
 import Tab from "../Tab/Tab"
+import db from "../../firebase"
+import { collection, onSnapshot } from "firebase/firestore"
 
 function Actions() {
+  const [data, setData] = useState([{ status: "loading", id: "initing" }])
+  useEffect(
+    () =>
+      onSnapshot(collection(db, "actions"), (snapshot) =>
+        setData(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+      ),
+    []
+  )
   const tabs = [
     {
       id: 1,
@@ -41,7 +51,7 @@ function Actions() {
       <div className={styles.container}>
         <div className={styles.sectionTitle}>Основные виды деятельности</div>
         <div className={styles.tabSection}>
-          {tabs.map((tab) => (
+          {data.map((tab) => (
             <Tab key={tab.id} title={tab.title} description={tab.description} />
           ))}
         </div>

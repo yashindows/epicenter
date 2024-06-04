@@ -8,7 +8,7 @@ function FormTabSection({ active, onChange }) {
         Почта
       </FormTab>
       <FormTab isActive={active === "viber"} onClick={() => onChange("viber")}>
-        Viber
+        Telegram
       </FormTab>
     </>
   )

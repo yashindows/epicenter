@@ -6,6 +6,21 @@ import FormTabSection from "../FormTab/FormTabSection"
 function Order() {
   const [value, setValue] = useState()
   const [formTab, setFormTab] = useState("viber")
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    const formData = new FormData(e.target)
+
+    const response = await fetch(
+      `https://api.telegram.org/bot6687593717:AAEOEeTziatuEg88K-1H0rn_5jxMuWPgq24/sendMessage?chat_id=-1002165716975&text=Новая заявка с сайта!%0AТелефон: %2B${formData
+        .get("phone")
+        .replace("+", "")}%0AСообщение: ${formData.get("text")}`
+    )
+    const result = await response.json()
+    console.log(result)
+  }
+
   return (
     <>
       <div className="main-page-btns">
@@ -47,7 +62,7 @@ function Order() {
         <div className={styles.popupTitle}>
           Заполните поля ниже и мы с вами свяжемся!
         </div>
-        <form method="post" className={styles.popupContent}>
+        <form onSubmit={handleSubmit} className={styles.popupContent}>
           <div className={styles.popupOptions}>
             <div className={styles.way}>
               <FormTabSection
@@ -61,15 +76,20 @@ function Order() {
                   value={value}
                   onChange={(e) => setValue(e.target.value)}
                   mask="+7(999)-999-99-99"
+                  name="phone"
                   placeholder="+7(___)-___-__-__"
                 />
               )}
               {formTab === "email" && (
-                <input type="email" placeholder="example@mail.com" />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="example@mail.com"
+                />
               )}
             </div>
           </div>
-          <textarea placeholder="Текст сообщения"></textarea>
+          <textarea name="text" placeholder="Текст сообщения"></textarea>
           <button className={styles.formBtn}>Отправить</button>
         </form>
       </dialog>

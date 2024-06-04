@@ -1,52 +1,20 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import styles from "./catalog.module.css"
+import db from "../../firebase"
+import { collection, onSnapshot } from "firebase/firestore"
+import Card from "./Card"
 
 function Catalog() {
-  const [searchQuery, setSearchQuery] = useState("")
   const [services, setServices] = useState([
-    {
-      id: 1,
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuuRIrv-BPDJtvolC32WGVOiptQYj6siw-tYWat18Nmg&s",
-      title: "Реклама на банерах",
-      price: 300,
-    },
-    {
-      id: 2,
-      image:
-        "https://masterpiecer-images.s3.yandex.net/150fbf41721011eeb4bb1e5d9776cfa6:upscaled",
-      title: "Изготовление вывесок",
-      price: 230,
-    },
-    {
-      id: 3,
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuuRIrv-BPDJtvolC32WGVOiptQYj6siw-tYWat18Nmg&s",
-      title: "Реклама на банерах",
-      price: 240,
-    },
-    {
-      id: 4,
-      image:
-        "https://masterpiecer-images.s3.yandex.net/150fbf41721011eeb4bb1e5d9776cfa6:upscaled",
-      title: "Изготовление вывесок",
-      price: 250,
-    },
-    {
-      id: 5,
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuuRIrv-BPDJtvolC32WGVOiptQYj6siw-tYWat18Nmg&s",
-      title: "Реклама на банерах",
-      price: 260,
-    },
-    {
-      id: 6,
-      image:
-        "https://masterpiecer-images.s3.yandex.net/150fbf41721011eeb4bb1e5d9776cfa6:upscaled",
-      title: "Изготовление вывесок",
-      price: 270,
-    },
+    { status: "loading", id: "initing" },
   ])
+  useEffect(() => {
+    onSnapshot(collection(db, "services"), (snapshot) =>
+      setServices(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+    )
+  }, [])
+
+  const [searchQuery, setSearchQuery] = useState("")
 
   const [sortOrder, setSortOrder] = useState("asc")
 
@@ -63,7 +31,9 @@ function Catalog() {
   }
 
   const filterCards = services.filter((card) => {
-    return card.title.toLocaleLowerCase().includes(searchQuery.toLowerCase())
+    if (card.title) {
+      return card.title.toLowerCase().includes(searchQuery.toLowerCase())
+    }
   })
 
   const handleSearchInputChange = (e) => {
@@ -78,20 +48,6 @@ function Catalog() {
           <div className={styles.action}>
             Сортировать по цене:
             <div className={styles.btns}>
-              {/* <button>
-                <svg
-                  width="27"
-                  height="30"
-                  viewBox="0 0 27 30"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M25.8626 27.6451H24.2802C24.3297 27.2355 24.3297 26.8771 24.3297 26.4676C24.3297 22.8328 21.2637 18.8396 18.544 15.3072C18.4945 15.2048 18.3956 15.1024 18.3462 15C18.3956 14.8976 18.4945 14.7952 18.544 14.6928C21.2637 11.1604 24.3297 7.16724 24.3297 3.53242C24.3297 3.12287 24.3297 2.71331 24.2802 2.35495H25.8626C26.456 2.35495 27 1.843 27 1.17747C27 0.511945 26.5055 0 25.8626 0H1.13736C0.543956 0 0 0.511945 0 1.17747C0 1.843 0.494506 2.35495 1.13736 2.35495H2.71978C2.67033 2.76451 2.67033 3.17406 2.67033 3.53242C2.67033 7.16724 5.73626 11.1604 8.45604 14.6928C8.50549 14.7952 8.6044 14.8976 8.65385 15C8.6044 15.1024 8.50549 15.2048 8.45604 15.3072C5.73626 18.8396 2.67033 22.8328 2.67033 26.4676C2.67033 26.8771 2.67033 27.2867 2.71978 27.6451H1.13736C0.543956 27.6451 0 28.157 0 28.8225C0 29.4881 0.494506 30 1.13736 30H25.8626C26.456 30 27 29.4881 27 28.8225C27 28.157 26.456 27.6451 25.8626 27.6451ZM4.8956 26.4676C4.8956 23.6519 7.86264 19.8123 10.2363 16.7406C10.4835 16.3823 10.7802 16.0751 11.0275 15.7167C11.3242 15.3072 11.3242 14.6928 11.0275 14.2833C10.7802 13.9761 10.533 13.6177 10.2363 13.2594C7.86264 10.1877 4.8956 6.34812 4.8956 3.53242C4.8956 3.12287 4.8956 2.71331 4.94506 2.35495H22.0549C22.1044 2.76451 22.1044 3.17406 22.1044 3.53242C22.1044 6.34812 19.1374 10.1877 16.7637 13.2594C16.5165 13.6177 16.2198 13.9249 15.9725 14.2833C15.6758 14.6928 15.6758 15.3072 15.9725 15.7167C16.2198 16.0239 16.467 16.3823 16.7637 16.7406C19.1374 19.8123 22.1044 23.6519 22.1044 26.4676C22.1044 26.8771 22.1044 27.2867 22.0549 27.6451H4.94506C4.8956 27.2355 4.8956 26.8771 4.8956 26.4676Z"
-                    fill="var(--text-color-secondary)"
-                  />
-                </svg>
-              </button> */}
               <button onClick={sortByPrice}>
                 <svg
                   width="20"
@@ -119,13 +75,13 @@ function Catalog() {
         </div>
         <div className={styles.catalogContent}>
           {filterCards.map((el) => (
-            <div key={el.id} className={styles.card}>
-              <div className={styles.cardImage}>
-                <img src={el.image} alt="" />
-              </div>
-              <p>{el.title}</p>
-              <p>{el.price}</p>
-            </div>
+            <Card
+              key={el.id}
+              img={el.image}
+              title={el.title}
+              description={el.description}
+              price={el.price}
+            />
           ))}
         </div>
       </div>

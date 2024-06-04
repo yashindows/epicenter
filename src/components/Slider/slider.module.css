@@ -48,3 +48,14 @@
   font-weight: 700;
   font-size: 48px;
 }
+
+.saleTitle {
+  position: absolute;
+  top: 30%;
+  left: 40%;
+  font-size: var(--title-size);
+  text-align: right;
+  background-color: #0000001f;
+  padding: 10px;
+  border-radius: 15px;
+}

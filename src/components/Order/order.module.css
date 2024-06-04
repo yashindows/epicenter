@@ -2,15 +2,6 @@
   cursor: pointer;
 }
 
-dialog {
-  outline: none;
-  border: none;
-  border-radius: 15px;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  padding: 75px 120px;
-}
-
 .popupContent {
   display: flex;
   flex-direction: column;

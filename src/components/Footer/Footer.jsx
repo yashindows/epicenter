@@ -12,7 +12,6 @@ function Footer() {
         <div className={styles.footerTop}>
           <div className={styles.footerLinks}>
             <Link to="services">Услуги</Link>
-            <Link to="price">Цены</Link>
             <Link to="contacts">Контакты</Link>
           </div>
           <div className={styles.distribution}>

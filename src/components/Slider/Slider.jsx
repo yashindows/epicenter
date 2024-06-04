@@ -1,15 +1,19 @@
 import React, { Children, useEffect, useState } from "react"
 import styles from "./slider.module.css"
 import SliderControl from "./SliderControl"
-// import db from "../../firebase"
-// import { collection, onSnapshot } from "firebase/firestore"
+import db from "../../firebase"
+import { collection, onSnapshot } from "firebase/firestore"
 
 function Slider() {
-  // useEffect(() => {
-  //   onSnapshot(collection(db, "items"), (snapshot) => {
-  //     snapshot.docs.map((doc) => console.log(doc.data()))
-  //   })
-  // }, [])
+  const [data, setData] = useState([{ status: "loading", id: "initing" }])
+
+  useEffect(
+    () =>
+      onSnapshot(collection(db, "sales"), (snapshot) =>
+        setData(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+      ),
+    []
+  )
 
   const [currentSlide, setCurrentSlide] = useState(0)
 
@@ -19,11 +23,11 @@ function Slider() {
   ]
 
   const goNextSlide = () => {
-    setCurrentSlide((currentSlide + 1) % images.length)
+    setCurrentSlide((currentSlide + 1) % data.length)
   }
 
   const goPrevSlide = () => {
-    setCurrentSlide((currentSlide - 1 + images.length) % images.length)
+    setCurrentSlide((currentSlide - 1 + data.length) % data.length)
   }
 
   return (
@@ -43,10 +47,11 @@ function Slider() {
                 {Children}
               </SliderControl>
             </div>
-            <img src={images[currentSlide]} alt="" />
+            <span className={styles.saleTitle}>{data[currentSlide].title}</span>
+            <img src={data[currentSlide].image} alt="" />
           </div>
           <div className={styles.sliderLines}>
-            {images.map((img, index) => (
+            {data.map((img, index) => (
               <div
                 key={index}
                 className={styles.line}

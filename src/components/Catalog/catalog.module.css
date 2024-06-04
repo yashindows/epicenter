@@ -69,11 +69,20 @@
   box-shadow: 0 4px 10px #00000038;
 }
 
+.card img,
+.card p {
+  pointer-events: none;
+}
+
 .card img {
   width: 100%;
   height: 400px;
   transition: var(--transition);
   object-fit: cover;
+}
+
+.card p {
+  padding: 20px;
 }
 
 .card:hover.card img {
@@ -89,4 +98,48 @@
   max-height: 400px;
   overflow: hidden;
   margin-bottom: 5px;
+}
+
+.productModal {
+  position: fixed;
+  inset-block-start: 0px;
+  inset-block-end: 0px;
+  z-index: 1000;
+}
+
+.dialogWrapper {
+  position: relative;
+  display: grid;
+  grid-template-areas: "image info";
+  gap: 20px;
+}
+
+.closeModal {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  position: absolute;
+  top: -10%;
+  right: -10%;
+}
+
+.productImage {
+  grid-area: image;
+  max-width: 500px;
+  height: auto;
+}
+
+.productInfo {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  grid-area: info;
+}
+
+.productTitle {
+  font-weight: 700;
+}
+
+.productDescription {
+  max-width: 500px;
 }
